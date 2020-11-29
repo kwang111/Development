@@ -5,22 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import {ListItemIcon} from '@material-ui/core';
+import { StayPrimaryPortraitSharp } from '@material-ui/icons';
 
 export default class DisplayList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            added: false,
-            times_added: 0
         };
 
-    }
-
-    addSong = () => {
-        this.setState({
-            added: true,
-            times_added: this.state.times_added + 1
-        })
     }
 
     render() {
@@ -39,13 +31,13 @@ export default class DisplayList extends React.Component {
                         <Card.Text>
                             Singer: {this.props.song.singer}
                         </Card.Text>
-                        <Button variant="primary" onClick={() => this.addSong()}>
+                        <Button variant="primary" onClick={() => this.props.addSong(this.props.song)}>
                             Add Song</Button>
                         <ListItemIcon>
                             {this.state.added ? (
-                                <PlaylistAddCheckIcon />
+                                <div className = "IconWrap"><PlaylistAddCheckIcon /></div>
                             ) : (
-                                    <PlaylistAddIcon />
+                                <div className = "IconWrap"><PlaylistAddIcon /></div>
                                 )}
                         </ListItemIcon>
                     </Card.Body>

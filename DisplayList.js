@@ -14,7 +14,7 @@ export default class DisplayList extends React.Component {
 
     makeCard = item => {
         return (
-            <SongCard song = {item} />
+            <SongCard song = {item} addSong = {this.props.addSong}/>
         )
     }
 
@@ -22,8 +22,9 @@ export default class DisplayList extends React.Component {
         return (
             <div>
                 <CardColumns>
-                    {(this.props.list.length > 0) ? this.props.list.map(item => { return this.makeCard(item) }) : "No songs match these criteria"}
+                    {this.props.list.map(item => { return this.makeCard(item) })}
                 </CardColumns>
+                {(this.props.list.length > 0) ? <h4>Have Fun Choosing!</h4> : <h4>No songs matches these Criteria</h4>}
             </div>
         )
     }
